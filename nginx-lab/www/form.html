@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the MC</title>
+
+    <style>
+        form {
+            width: 600px;                    
+            margin: 5% auto;                 
+            padding: 40px;                   
+            
+
+            border: 3px solid #0b0e0f;       
+            border-radius: 25px;             
+            
+            
+            box-shadow: 0 10px 30px rgba(74, 83, 90, 0.15);
+            
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-title {
+            text-align: center;
+            color: #2c363d;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            border-bottom: 2px solid #2c363d;
+            padding-bottom: 10px;
+        }
+        
+        .field-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            border-left: 4px solid #2c363d;
+        }
+        
+        .field-group p {
+            margin: 0 0 10px 0;
+            color: #2c363d;
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            margin: 5px 0;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #2c363d;
+            box-shadow: 0 0 0 3px rgba(44, 54, 61, 0.2);
+            outline: none;
+        }
+        
+        select {
+            padding: 12px;
+            margin: 5px 0;
+            width: 100%;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            background-color: white;
+            font-size: 16px;
+        }
+      
+        .checkbox-line {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+        
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: #2c363d;
+        }
+        
+        button {
+            width: 100%;
+            margin: 20px 0 10px 0;
+            padding: 15px;
+            
+            color: white;
+            background: linear-gradient(135deg, #2c363d 0%, #495057 100%);
+            
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: linear-gradient(135deg, #495057 0%, #2c363d 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 54, 61, 0.3);
+        }
+        
+        #result {
+            width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #2c363d;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            box-shadow: 0 5px 15px rgba(44, 54, 61, 0.1);
+        }
+        
+        #result h3 {
+            color: #2c363d;
+            margin-top: 0;
+            border-bottom: 1px solid #2c363d;
+            padding-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <form id="myForm">
+
+        <input type="text" name="username" placeholder="Введите имя">
+        <input type="text" name="birthday" placeholder="Дата рождения">
+
+        <p> Тема </p>
+        <select name="theme">
+            <option value="Home"> Домашний уют </option>
+            <option value="Kitchen"> Основы кулинарного мастерства </option>
+            <option value="Budget"> Стратегия личного бюджета </option>
+            <option value="Menthal"> Психология эмоционального баланса  </option>
+        </select>
+
+        <input type="checkbox" name="materials"> Материалы включены
+
+        <br>
+            <p> Формат участия </p>
+            <input type="radio" name="type" value="Offline"> Офлайн
+            <input type="radio" name="type" value="Online"> Онлайн
+            <input type="radio" name="type" value="Hybrid"> Гибрид
+        <br>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <div id = "result"></div>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const formData = new FormData(this)
+            let output = ""
+
+            for (const [name, value] of formData.entries()) {
+                output += `<p><b>${name}:</b> ${value} </p>`;
+            }
+            document.getElementById("result").innerHTML = output;
+        })
+    </script>
+
+</body>
+</html>
