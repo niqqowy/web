@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join the MC</title>
+    <title>Join the MC - Форма</title>
 
     <style>
         form {
             width: 600px;                    
             margin: 5% auto;                 
             padding: 40px;                   
-            
-
             border: 3px solid #0b0e0f;       
             border-radius: 25px;             
-            
-            
             box-shadow: 0 10px 30px rgba(74, 83, 90, 0.15);
-            
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            
             position: relative;
             overflow: hidden;
         }
@@ -48,7 +42,7 @@
             font-weight: bold;
         }
         
-        input[type="text"] {
+        input[type="text"], input[type="email"] {
             margin: 5px 0;
             width: 100%;
             padding: 12px;
@@ -56,9 +50,10 @@
             border-radius: 6px;
             font-size: 16px;
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
         
-        input[type="text"]:focus {
+        input[type="text"]:focus, input[type="email"]:focus {
             border-color: #2c363d;
             box-shadow: 0 0 0 3px rgba(44, 54, 61, 0.2);
             outline: none;
@@ -72,6 +67,7 @@
             border-radius: 6px;
             background-color: white;
             font-size: 16px;
+            box-sizing: border-box;
         }
       
         .checkbox-line {
@@ -91,14 +87,23 @@
             accent-color: #2c363d;
         }
         
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
         button {
             width: 100%;
             margin: 20px 0 10px 0;
             padding: 15px;
-            
             color: white;
             background: linear-gradient(135deg, #2c363d 0%, #495057 100%);
-            
             border: none;
             border-radius: 8px;
             font-size: 18px;
@@ -111,6 +116,30 @@
             background: linear-gradient(135deg, #495057 0%, #2c363d 100%);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(44, 54, 61, 0.3);
+        }
+        
+        .nav-links {
+            width: 600px;
+            margin: 20px auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .nav-links a {
+            color: #2c363d;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border: 1px solid #2c363d;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: #2c363d;
+            color: white;
         }
         
         #result {
@@ -134,44 +163,56 @@
 </head>
 <body>
     
-    <form id="myForm">
+    <form id="myForm" action="process.php" method="POST">
 
-        <input type="text" name="username" placeholder="Введите имя">
+        <input type="text" name="username" placeholder="Введите имя" required>
+        <input type="email" name="email" placeholder="Ваш email" required>
         <input type="text" name="birthday" placeholder="Дата рождения">
 
-        <p> Тема </p>
+        <p>Тема</p>
         <select name="theme">
-            <option value="Home"> Домашний уют </option>
-            <option value="Kitchen"> Основы кулинарного мастерства </option>
-            <option value="Budget"> Стратегия личного бюджета </option>
-            <option value="Menthal"> Психология эмоционального баланса  </option>
+            <option value="Home">Домашний уют</option>
+            <option value="Kitchen">Основы кулинарного мастерства</option>
+            <option value="Budget">Стратегия личного бюджета</option>
+            <option value="Menthal">Психология эмоционального баланса</option>
         </select>
 
-        <input type="checkbox" name="materials"> Материалы включены
+        <div class="checkbox-line">
+            <input type="checkbox" name="materials" value="yes"> Материалы включены
+        </div>
 
-        <br>
-            <p> Формат участия </p>
-            <input type="radio" name="type" value="Offline"> Офлайн
-            <input type="radio" name="type" value="Online"> Онлайн
-            <input type="radio" name="type" value="Hybrid"> Гибрид
-        <br>
+        <p>Формат участия</p>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" name="type" value="Offline" checked> Офлайн
+            </div>
+            <div class="radio-option">
+                <input type="radio" name="type" value="Online"> Онлайн
+            </div>
+            <div class="radio-option">
+                <input type="radio" name="type" value="Hybrid"> Гибрид
+            </div>
+        </div>
 
         <button type="submit">Отправить</button>
     </form>
 
-    <div id = "result"></div>
+    <div class="nav-links">
+        <a href="form.html">Форма</a>
+        <a href="index.php">Главная</a>
+        <a href="view.php">Все данные</a>
+    </div>
 
     <script>
         document.getElementById("myForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const formData = new FormData(this)
-            let output = ""
-
-            for (const [name, value] of formData.entries()) {
-                output += `<p><b>${name}:</b> ${value} </p>`;
-            }
-            document.getElementById("result").innerHTML = output;
-        })
+            const username = document.querySelector("[name='username']").value;
+            const email = document.querySelector("[name='email']").value;
+            const theme = document.querySelector("[name='theme']").value;
+            
+            alert(`Вы ввели:\nИмя: ${username}\nEmail: ${email}\nТема: ${theme}`);
+            
+        
+        });
     </script>
 
 </body>
