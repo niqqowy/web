@@ -164,7 +164,7 @@ session_start();
         
      
         <hr>
-        <?php phpinfo(); ?>
+        
     </div>
 </body>
 </html>
