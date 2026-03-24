@@ -1,0 +1,84 @@
+{
+    "pagination": {
+        "total": 131552,
+        "limit": 10,
+        "offset": 0,
+        "total_pages": 13156,
+        "current_page": 1,
+        "next_url": "https:\/\/api.artic.edu\/api\/v1\/artworks?page=2&limit=10&fields=id%2Ctitle%2Cartist_title%2Cmedium_display"
+    },
+    "data": [
+        {
+            "id": 35231,
+            "title": "\"Toby Lil\" Quilt",
+            "medium_display": "Cotton, pieced plain and satin weaves, some printed in a variety of techniques and some glazed; appliquéd with plain, twill and satin weaves, some printed in a variety of techniques and some glazed; quilted",
+            "artist_title": "Bertha Stenge"
+        },
+        {
+            "id": 24158,
+            "title": "Bedcover (Star Pattern)",
+            "medium_display": "Cotton, plain weave; pieced with cotton, plain weave, printed; quilted; backed with cotton, plain weave",
+            "artist_title": null
+        },
+        {
+            "id": 51322,
+            "title": "\"A Wreath of Roses\" Quilt",
+            "medium_display": "Cotton, plain weave, pieced; appliqued with cotton, plain weave, printed, attached in buttonhole stitch; quilted; backed with cotton, plain weave",
+            "artist_title": "Sarah Henry"
+        },
+        {
+            "id": 39202,
+            "title": "Unifinished 'Friendship Offering' Quilt",
+            "medium_display": "Cotton, plain weave; glazed; some inscribed with sepia ink; cotton, plain weave; roller printed; and center of linen, plain weave self-patterned by main warp and ground weft floats; embroidered with wool in stem stitches",
+            "artist_title": null
+        },
+        {
+            "id": 107047,
+            "title": "\"Trip Around the World\" Quilt",
+            "medium_display": "Cotton, plain weaves; printed; pieced; backed with cotton, plain weave; quilted",
+            "artist_title": "Grace Earl"
+        },
+        {
+            "id": 100718,
+            "title": "Bedcover",
+            "medium_display": "Silk and cotton, variety of plain, satin and twill weaves, some with supplementary and\/or self-patterning elements; pieced; quilted; edged with silk, warp-float faced satin weave",
+            "artist_title": null
+        },
+        {
+            "id": 133632,
+            "title": "Central Medallion Quilt with \"Yankee Puzzle\" or \"Hour Glass\"  Borders",
+            "medium_display": "Center: cotton, plain weave; embroidered with silk, cotton, and wool in buttonhole, chain, cross, single cross, feather, Roumanian, satin, single satin, stem, and twined double running stitches.\nSquares: cotton, cotton and linen, and linen, plain weaves; block, copperplate, and roller printed",
+            "artist_title": "Mary Jones"
+        },
+        {
+            "id": 121944,
+            "title": "Bedcover",
+            "medium_display": "Three panels joined: cotton, plain weave; block-printed-resist-dyed; backed with linen, plain weave; edged with cotton, plain weave tape; block-printed-resist-dyed; quilted with linen",
+            "artist_title": null
+        },
+        {
+            "id": 201797,
+            "title": "\"Double Irish Chain\" Quilt",
+            "medium_display": "Cotton, plain weave pieced with cotton, plain weave; printed; backed and edged with cotton, plain weave; printed; quilted",
+            "artist_title": null
+        },
+        {
+            "id": 143688,
+            "title": "\"Victory Quilt\"",
+            "medium_display": "Appliquéd and pieced quilt with raised areas (trapunto); dyed and undyed, cotton plain weave fabrics; cotton thread embroidery",
+            "artist_title": "Bertha Stenge"
+        }
+    ],
+    "info": {
+        "license_text": "The `description` field in this response is licensed under a Creative Commons Attribution 4.0 Generic License (CC-By) and the Terms and Conditions of artic.edu. All other data in this response is licensed under a Creative Commons Zero (CC0) 1.0 designation and the Terms and Conditions of artic.edu.",
+        "license_links": [
+            "https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/",
+            "https:\/\/www.artic.edu\/terms"
+        ],
+        "version": "1.14"
+    },
+    "config": {
+        "iiif_url": "https:\/\/www.artic.edu\/iiif\/2",
+        "website_url": "http:\/\/www.artic.edu"
+    }
+}
