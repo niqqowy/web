@@ -9,7 +9,25 @@ class RedisExampleTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->redis = new RedisExample('redis', 6379);
+       
+        $maxAttempts = 30;
+        $connected = false;
+        
+        for ($i = 0; $i < $maxAttempts; $i++) {
+            try {
+                $this->redis = new RedisExample('redis', 6379);
+                $this->redis->getPlayerScore('test');
+                $connected = true;
+                break;
+            } catch (\Exception $e) {
+                sleep(1);
+            }
+        }
+        
+        if (!$connected) {
+            throw new \RuntimeException('Не удалось подключиться к Redis');
+        }
+        
         $this->redis->clearAll();
     }
 

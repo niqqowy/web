@@ -2,11 +2,6 @@ name: PHP Docker CI - Games
 
 on:
   push:
-    branches:
-      - '*' 
-  pull_request:
-    branches:
-      - '*' 
 
 jobs:
   build-and-test:
@@ -20,10 +15,13 @@ jobs:
         run: docker compose up -d --build
 
       - name: Wait for services
-        run: sleep 15
+        run: sleep 20
 
       - name: Check running containers
         run: docker ps
+
+      - name: Check Redis connection
+        run: docker compose exec -T php php -r "try { (new Predis\Client('tcp://redis:6379'))->ping(); echo 'Redis OK'; } catch(Exception \$e) { echo 'Redis FAIL: '.\$e->getMessage(); }"
 
       - name: Install Composer dependencies
         run: docker compose exec -T php composer install --no-interaction
