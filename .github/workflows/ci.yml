@@ -21,7 +21,17 @@ jobs:
         run: docker ps
 
       - name: Check Redis connection
-        run: docker compose exec -T php php -r "try { (new Predis\Client('tcp://redis:6379'))->ping(); echo 'Redis OK'; } catch(Exception \$e) { echo 'Redis FAIL: '.\$e->getMessage(); }"
+        run: |
+          docker compose exec -T php php -r "
+          require 'vendor/autoload.php';
+          try {
+              \$redis = new Predis\Client('tcp://redis:6379');
+              \$redis->ping();
+              echo 'Redis OK';
+          } catch(Exception \$e) {
+              echo 'Redis FAIL: ' . \$e->getMessage();
+          }
+          "
 
       - name: Install Composer dependencies
         run: docker compose exec -T php composer install --no-interaction
