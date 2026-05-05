@@ -5,9 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker compose up -d --build
-      - run: sleep 5
-      - run: docker compose exec -T php composer install --no-interaction
-      - run: docker compose exec -T php vendor/bin/phpunit tests --colors=always
-      - if: always()
-        run: docker compose down
+      - run: docker compose build
+      - run: docker compose run --rm php composer install --no-interaction
+      - run: docker compose run --rm php vendor/bin/phpunit tests --colors=always

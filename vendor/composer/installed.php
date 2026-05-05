@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'student/lab9-games',
+        'name' => 'student/lab9-masterclass',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'b38c7f68bace6728a53f5e3c4cf9ef5b5ad3bc7a',
+        'reference' => '0c859604ce9824fee3c4130fb32d7b4fc1cd460c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -244,10 +244,10 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
-        'student/lab9-games' => array(
+        'student/lab9-masterclass' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'b38c7f68bace6728a53f5e3c4cf9ef5b5ad3bc7a',
+            'reference' => '0c859604ce9824fee3c4130fb32d7b4fc1cd460c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
