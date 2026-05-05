@@ -1,6 +1,4 @@
-FROM php:8.2-fpm
-
-RUN docker-php-ext-install pdo pdo_mysql
+FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
     zip unzip git \
@@ -12,4 +10,4 @@ WORKDIR /var/www/html
 
 COPY . /var/www/html
 
-CMD ["php-fpm"]
+CMD ["php", "-a"]

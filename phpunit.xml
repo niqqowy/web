@@ -4,7 +4,7 @@
          bootstrap="vendor/autoload.php"
          colors="true">
     <testsuites>
-        <testsuite name="Games Test Suite">
+        <testsuite name="MasterClass Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

@@ -1,35 +1,13 @@
-name: PHP Docker CI - Games
-
-on:
-  push:
-
+name: PHP CI - MasterClass
+on: [push]
 jobs:
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
-
-      - name: Start Docker containers
-        run: docker compose up -d --build
-
-      - name: Wait for services
-        run: sleep 20
-
-      - name: Check running containers
-        run: docker ps
-
-      - name: Install Composer dependencies
-        run: docker compose exec -T php composer install --no-interaction
-
-      - name: Run PHPUnit tests
-        run: docker compose exec -T php vendor/bin/phpunit tests --colors=always
-
-      - name: Show logs on error
-        if: failure()
-        run: docker compose logs
-
-      - name: Stop Docker containers
-        if: always()
+      - uses: actions/checkout@v4
+      - run: docker compose up -d --build
+      - run: sleep 5
+      - run: docker compose exec -T php composer install --no-interaction
+      - run: docker compose exec -T php vendor/bin/phpunit tests --colors=always
+      - if: always()
         run: docker compose down
