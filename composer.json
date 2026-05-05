@@ -1,6 +1,7 @@
 {
-    "name": "student/lab9-masterclass",
-    "description": "Лабораторная работа №9 CI/CD - Регистрация на мастер-класс",
+    "name": "student/php-project",
+    "description": "PHP project with CI/CD",
+    "type": "project",
     "require": {
         "php": ">=8.0"
     },
@@ -9,7 +10,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "code/"
+            "App\\": "code/src/"
         }
     }
 }

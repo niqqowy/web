@@ -1,6 +1,13 @@
+version: '3.8'
+
 services:
   php:
     build: .
     volumes:
-      - ./:/var/www/html
+      - ./code/:/var/www/html
+      - ./tests/:/var/www/html/tests
+      - ./composer.json:/var/www/html/composer.json
     working_dir: /var/www/html
+    environment:
+      - APP_ENV=${APP_ENV:-testing}
+      - APP_DEBUG=${APP_DEBUG:-true}

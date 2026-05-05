@@ -1,9 +1,90 @@
-name: PHP CI
-on: [push]
+name: PHP Docker CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  test:
+  build:
+    name: Build Docker Image
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - uses: php-actions/composer@v6
-      - run: ./vendor/bin/phpunit tests --colors=always
+      - name: Clone repository
+        uses: actions/checkout@v3
+      
+      - name: Build Docker image
+        run: docker build -t php-app .
+      
+      - name: Check Docker images
+        run: docker images
+      
+      - name: Save Docker image
+        run: docker save php-app > php-app.tar
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-image
+          path: php-app.tar
+
+  test:
+    name: Run Tests
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+      
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docker-image
+      
+      - name: Load Docker image
+        run: docker load < php-app.tar
+      
+      - name: Create .env.test file
+        run: |
+          echo "APP_ENV=testing" > .env.test
+          echo "APP_DEBUG=true" >> .env.test
+          echo "DB_HOST=localhost" >> .env.test
+          echo "DB_PORT=3306" >> .env.test
+      
+      - name: Start Docker containers
+        run: docker compose up -d --build
+      
+      - name: Wait for services
+        run: sleep 15
+      
+      - name: Check running containers
+        run: docker ps
+      
+      - name: Install Composer dependencies
+        run: docker compose exec -T php composer install --no-interaction
+      
+      - name: Run PHPUnit tests
+        run: docker compose exec -T php vendor/bin/phpunit tests --colors=always
+      
+      - name: Show logs on error
+        if: failure()
+        run: docker compose logs
+      
+      - name: Check container status on failure
+        if: failure()
+        run: docker ps -a
+      
+      - name: Stop containers
+        if: always()
+        run: docker compose down
+      
+      - name: Cleanup
+        if: always()
+        run: |
+          docker system prune -f
+          rm -f php-app.tar
