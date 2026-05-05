@@ -3,7 +3,7 @@
         'name' => 'student/lab9-masterclass',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0c859604ce9824fee3c4130fb32d7b4fc1cd460c',
+        'reference' => 'c9321c258b948329147ad145cf026de3313a6a67',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -247,7 +247,7 @@
         'student/lab9-masterclass' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0c859604ce9824fee3c4130fb32d7b4fc1cd460c',
+            'reference' => 'c9321c258b948329147ad145cf026de3313a6a67',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
