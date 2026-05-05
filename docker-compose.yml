@@ -2,8 +2,7 @@ services:
   php:
     build: .
     volumes:
-      - ./code/:/var/www/html
-      - ./tests/:/var/www/html/tests
+      - ./:/var/www/html
     working_dir: /var/www/html
     depends_on:
       - redis

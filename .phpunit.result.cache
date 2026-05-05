@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"RedisExampleTest::testSaveAndGetGameScore":0.139,"RedisExampleTest::testGetTopPlayers":0.025,"RedisExampleTest::testSetAndGetGameSession":0.037,"RedisExampleTest::testGetNonExistentSession":0,"RedisExampleTest::testTopPlayersLimit":0.002}}
