@@ -1,10 +1,9 @@
-name: PHP CI - MasterClass
+name: PHP CI
 on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker compose build
-      - run: docker compose run --rm php composer install --no-interaction
-      - run: docker compose run --rm php vendor/bin/phpunit tests --colors=always
+      - uses: php-actions/composer@v6
+      - run: ./vendor/bin/phpunit tests --colors=always
