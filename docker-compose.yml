@@ -9,5 +9,3 @@ services:
       - ./tests:/var/www/html/tests:ro
       - ./composer.json:/var/www/html/composer.json:ro
       - ./phpunit.xml:/var/www/html/phpunit.xml:ro
-    env_file:
-      - .env.test
