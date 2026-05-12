@@ -1,18 +1,13 @@
-FROM php:8.1-cli
-
-RUN apt-get update && \
-    apt-get install -y \
-        zip \
-        unzip \
-        git && \
-    rm -rf /var/lib/apt/lists/*
-
+FROM php:8.5-fpm
 RUN docker-php-ext-install pdo pdo_mysql
-
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-
+RUN apt-get update && apt-get install -y \
+    zip unzip git \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
-COPY . /var/www/html
-
-CMD ["php", "-a"]
+COPY composer.json ./
+COPY phpunit.xml ./
+COPY ./code /var/www/html
+COPY ./tests /var/www/html/tests
+CMD ["php-fpm"]

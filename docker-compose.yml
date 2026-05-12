@@ -1,13 +1,10 @@
-version: '3.8'
-
 services:
   php:
     build: .
     volumes:
-      - ./code/:/var/www/html
-      - ./tests/:/var/www/html/tests
-      - ./composer.json:/var/www/html/composer.json
-    working_dir: /var/www/html
-    environment:
-      - APP_ENV=${APP_ENV:-testing}
-      - APP_DEBUG=${APP_DEBUG:-true}
+      - ./code/:/var/www/html/code:ro
+      - ./tests/:/var/www/html/tests:ro
+      - ./composer.json:/var/www/html/composer.json:ro
+      - ./phpunit.xml:/var/www/html/phpunit.xml:ro
+    env_file:
+      - .env.test
