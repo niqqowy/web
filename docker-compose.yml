@@ -1,9 +1,12 @@
 services:
   php:
     build: .
+    environment:
+      - APP_ENV=test
+      - APP_DEBUG=true
     volumes:
-      - ./code/:/var/www/html/code:ro
-      - ./tests/:/var/www/html/tests:ro
+      - ./code:/var/www/html/code:ro
+      - ./tests:/var/www/html/tests:ro
       - ./composer.json:/var/www/html/composer.json:ro
       - ./phpunit.xml:/var/www/html/phpunit.xml:ro
     env_file:
